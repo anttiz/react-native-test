@@ -81,9 +81,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.anttilehexpo.expotest'
+    namespace 'com.anttilehexpo.expomaterial'
     defaultConfig {
-        applicationId 'com.anttilehexpo.expotest'
+        applicationId 'com.anttilehexpo.expomaterial'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

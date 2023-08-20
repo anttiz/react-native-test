@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-test",
-    "slug": "expo-test",
+    "name": "expo-material",
+    "slug": "expo-material",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anttilehexpo.expotest"
+      "package": "com.anttilehexpo.expomaterial"
     },
     "web": {
       "bundler": "metro",

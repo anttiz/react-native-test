@@ -1,4 +1,4 @@
-package com.anttilehexpo.expotest;
+package com.anttilehexpo.expomaterial;
 
 import android.app.Application;
 import android.content.res.Configuration;
