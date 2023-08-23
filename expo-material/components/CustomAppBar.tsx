@@ -1,12 +1,17 @@
-import { Appbar } from 'react-native-paper';
+import { Appbar, useTheme } from "react-native-paper";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack/lib/typescript/src/types";
-import { getHeaderTitle } from '@react-navigation/elements';
+import { getHeaderTitle } from "@react-navigation/elements";
 
-export default function CustomAppBar({back, navigation, options, route}: NativeStackHeaderProps) {
+export default function CustomAppBar({
+  back,
+  navigation,
+  options,
+  route,
+}: NativeStackHeaderProps) {
   const title = getHeaderTitle(options, route.name);
-  console.log('inside', title, route.name)
+  const theme = useTheme();
   return (
-    <Appbar.Header>
+    <Appbar.Header dark={theme.dark}>
       {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
       <Appbar.Content title={title} />
     </Appbar.Header>

@@ -12,7 +12,6 @@ import {
   PaperProvider,
   MD3LightTheme as DefaultTheme,
 } from "react-native-paper";
-import CustomAppBar from "../components/CustomAppBar";
 import lightTheme from "../aux/theme/lightTheme.json";
 import darkTheme from "../aux/theme/darkTheme.json";
 
@@ -64,7 +63,7 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <PaperProvider theme={getTheme(colorScheme === "light")}>
+    <PaperProvider theme={getTheme(colorScheme !== "light")}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />

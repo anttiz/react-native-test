@@ -1,13 +1,15 @@
 import { StyleSheet, View, Text } from 'react-native';
 
-import EditScreenInfo from '../../components/EditScreenInfo';
+import EditScreenInfo from '../../../components/EditScreenInfo';
+import { useTheme } from 'react-native-paper';
 
-export default function TabOneScreen() {
+export default function SettingsScreen() {
+  const theme = useTheme();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.colors.surface}]}>
       <Text style={styles.title}>Settings</Text>
       <View style={styles.separator} />
-      <EditScreenInfo path="app/(tabs)/settings.tsx" />
+      {/*<EditScreenInfo path="app/(tabs)/settings/index.tsx" />*/}
     </View>
   );
 }
