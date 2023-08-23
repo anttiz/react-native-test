@@ -11,17 +11,17 @@ const birds = [
 ];
 export default function Page() {
   return (
-    <List.Section>
-      {birds.map(({ title, id }) => {
-        return (
-          <List.Item
-            key={String(id)}
-            title={title}
-            left={() => <List.Icon icon="folder" />}
-            onPress={() => router.push(`/birds/bird/${id}`)}
-          />
-        );
-      })}
-    </List.Section>
+      <List.Section>
+        {birds.map(({ title, id }) => {
+          return (
+            <List.Item
+              key={String(id)}
+              title={title}
+              left={() => <List.Icon icon="folder" />}
+              onPress={() => router.push(`/birds/bird/${id}`)}
+            />
+          );
+        })}
+      </List.Section>
   );
 }

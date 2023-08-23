@@ -25,7 +25,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Info',
+          title: 'Cars',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -44,16 +44,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="cars"
+        name="birds"
         options={{
-          title: 'Cars',
+          title: 'Birds',
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="birds"
+        name="settings"
         options={{
-          title: 'Birds',
+          title: 'Settings',
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
