@@ -2,8 +2,6 @@ import { Slot, Stack } from "expo-router";
 import CustomAppBar from "../../../components/CustomAppBar";
 
 export default function Layout() {
-  return <Slot />;
-  /*
   return (
     <Stack>
       <Stack.Screen
@@ -16,5 +14,4 @@ export default function Layout() {
       />
     </Stack>
   );
-  */
 }

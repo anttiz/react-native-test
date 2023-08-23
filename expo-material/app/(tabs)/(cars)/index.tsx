@@ -20,10 +20,9 @@ const cars = [
   },
 ];
 export default function Page() {
-  const theme = useTheme();
   return (
     <Container>
-      <List.Section style={{ backgroundColor: theme.colors.background }}>
+      <List.Section>
         {cars.map(({ title, id }) => {
           return (
             <List.Item

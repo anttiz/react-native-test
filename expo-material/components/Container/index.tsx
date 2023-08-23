@@ -1,12 +1,14 @@
-import { useTheme } from "react-native-paper";
+import { PaperProvider, useTheme } from "react-native-paper";
 import { StyledContainer } from "./index.styling";
 import { PropsWithChildren } from "react";
 
 export const Container = ({ children }: PropsWithChildren) => {
   const theme = useTheme();
   return (
-    <StyledContainer style={{ backgroundColor: theme.colors.surface }}>
-      {children}
-    </StyledContainer>
+    <PaperProvider theme={theme}>
+      <StyledContainer style={{ backgroundColor: theme.colors.surface }}>
+        {children}
+      </StyledContainer>
+    </PaperProvider>
   );
 };
