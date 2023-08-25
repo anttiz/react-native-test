@@ -1,8 +1,10 @@
-import { router } from "expo-router";
-import { List, useTheme } from "react-native-paper";
+import { Link, router } from "expo-router";
+import { List, Portal, Modal } from "react-native-paper";
 import uuid from "react-native-uuid";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { Container } from "../../../components/Container";
+import { StyledFab } from "../../../components/Fab/index.styling";
+import { useState } from "react";
 
 const getNewUuid = () => uuid.v4();
 const cars = [
@@ -20,6 +22,7 @@ const cars = [
   },
 ];
 export default function Page() {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <Container>
       <List.Section>
@@ -34,6 +37,9 @@ export default function Page() {
           );
         })}
       </List.Section>
+      <Link href="/add-car-modal" asChild>
+        <StyledFab small icon="plus" onPress={() => console.log("Hello")} />
+      </Link>
     </Container>
   );
 }

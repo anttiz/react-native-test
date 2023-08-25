@@ -20,6 +20,15 @@ export default function Layout() {
           header: (props) => <CustomAppBar {...props} />,
         }}
       />
+      <Stack.Screen
+        name="add-car-modal"
+        options={{
+          presentation: "modal",
+          headerShown: true,
+          headerTitle: "Add car",
+          header: (props) => <CustomAppBar {...props} />,
+        }}
+      />
     </Stack>
   );
 }

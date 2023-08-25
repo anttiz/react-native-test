@@ -10,10 +10,12 @@ export default function CustomAppBar({
 }: NativeStackHeaderProps) {
   const title = getHeaderTitle(options, route.name);
   const theme = useTheme();
+  const isModal = options.presentation === 'modal';
   return (
     <Appbar.Header dark={theme.dark}>
-      {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
+      {back && !isModal ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
       <Appbar.Content title={title} />
+      {isModal ? <Appbar.Action icon='close' onPress={navigation.goBack} /> : null}
     </Appbar.Header>
   );
 }
