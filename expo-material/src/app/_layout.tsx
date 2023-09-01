@@ -8,6 +8,7 @@ import {
   MD3LightTheme as DefaultTheme,
 } from "react-native-paper";
 import { useGetTheme } from "../aux/theme/useGetTheme";
+import { AppProvider } from "../aux/store";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -50,8 +51,10 @@ function RootLayoutNav() {
   const theme = useGetTheme();
 
   return (
-    <PaperProvider theme={theme}>
-      <Slot />
-    </PaperProvider>
+    <AppProvider>
+      <PaperProvider theme={theme}>
+        <Slot />
+      </PaperProvider>
+    </AppProvider>
   );
 }

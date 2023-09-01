@@ -1,36 +1,21 @@
 import { Link, router } from "expo-router";
-import { List, Portal, Modal } from "react-native-paper";
-import uuid from "react-native-uuid";
-import { StyleSheet } from "react-native";
+import { List } from "react-native-paper";
 import { Container } from "../../../components/Container";
 import { StyledFab } from "../../../components/Fab/index.styling";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../../../aux/store";
 
-const getNewUuid = () => uuid.v4();
-const cars = [
-  {
-    id: getNewUuid(),
-    title: "Mitsubishi",
-  },
-  {
-    id: getNewUuid(),
-    title: "Ford",
-  },
-  {
-    id: getNewUuid(),
-    title: "Toyota",
-  },
-];
 export default function Page() {
   const [modalVisible, setModalVisible] = useState(false);
+  const { state, dispatch } = useContext(AppContext);
   return (
     <Container>
       <List.Section>
-        {cars.map(({ title, id }) => {
+        {state.cars.map(({ name, id }) => {
           return (
             <List.Item
               key={String(id)}
-              title={title}
+              title={name}
               left={() => <List.Icon icon="folder" />}
               onPress={() => router.push(`/car/${id}`)}
             />
@@ -38,15 +23,8 @@ export default function Page() {
         })}
       </List.Section>
       <Link href="/add-car-modal" asChild>
-        <StyledFab small icon="plus" onPress={() => console.log("Hello")} />
+        <StyledFab small icon="plus" />
       </Link>
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-  },
-});

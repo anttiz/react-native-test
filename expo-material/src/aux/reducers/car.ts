@@ -1,19 +1,19 @@
 import { Action, ActionMap } from "./types";
 
 export enum Types {
-  Create = "CREATE_PRODUCT",
-  Delete = "DELETE_PRODUCT",
-  Add = "ADD_PRODUCT"
+  Create = "CREATE_CAR",
+  Delete = "DELETE_CAR",
+  Add = "ADD_CAR"
 }
 
 // Bird
 
-export type BirdType = {
+export type CarType = {
   id: string;
   name: string;
 };
 
-type BirdPayload = {
+type CarPayload = {
   [Types.Create]: {
     id: string;
     name: string;
@@ -23,12 +23,12 @@ type BirdPayload = {
   };
 };
 
-export type BirdActions = ActionMap<BirdPayload>[keyof ActionMap<
-  BirdPayload
+export type CarActions = ActionMap<CarPayload>[keyof ActionMap<
+  CarPayload
 >];
 
-export const birdReducer = (
-  state: BirdType[],
+export const carReducer = (
+  state: CarType[],
   action: Action
 ) => {
   switch (action.type) {
