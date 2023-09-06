@@ -1,14 +1,14 @@
 import { BirdActions, BirdType } from "./bird";
 import { CarActions, CarType } from "./car";
-import { DarkModeActions } from "./darkMode";
+import { Settings, SettingsActions } from "./settings";
 
 export type InitialStateType = {
   cars: CarType[];
   birds: BirdType[];
-  darkMode: boolean;
+  settings: Settings;
 };
 
-export type Action = BirdActions | DarkModeActions | CarActions;
+export type Action = BirdActions | SettingsActions | CarActions;
 
 export type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -18,5 +18,5 @@ export type ActionMap<M extends { [index: string]: any }> = {
     : {
         type: Key;
         payload: M[Key];
-      }
+      };
 };

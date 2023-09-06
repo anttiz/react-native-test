@@ -3,7 +3,7 @@ import React, {
   createContext,
   useReducer,
 } from "react";
-import { darkModeReducer } from "../reducers/darkMode";
+import { initialSettings, settingsReducer } from "../reducers/settings";
 import { birdReducer } from "../reducers/bird";
 import { Action, InitialStateType } from "../reducers/types";
 import { carReducer } from "../reducers/car";
@@ -11,7 +11,7 @@ import { carReducer } from "../reducers/car";
 const initialState: InitialStateType = {
   cars: [],
   birds: [],
-  darkMode: false,
+  settings: initialSettings,
 };
 
 const AppContext = createContext<{
@@ -26,7 +26,7 @@ const AppContext = createContext<{
 const mainReducer = (state: InitialStateType, action: Action) => ({
   cars: carReducer(state.cars, action),
   birds: birdReducer(state.birds, action),
-  darkMode: darkModeReducer(state.darkMode, action),
+  settings: settingsReducer(state.settings, action),
 });
 
 const AppProvider = ({ children }: PropsWithChildren) => {

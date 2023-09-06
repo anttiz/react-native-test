@@ -1,4 +1,4 @@
-import { Slot, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import CustomAppBar from "../../../components/CustomAppBar";
 
 export default function Layout() {
@@ -20,6 +20,15 @@ export default function Layout() {
           header: (props) => {
             return <CustomAppBar {...props} />;
           },
+        }}
+      />
+      <Stack.Screen
+        name="add-bird-modal"
+        options={{
+          presentation: "modal",
+          headerShown: true,
+          headerTitle: "Add bird",
+          header: (props) => <CustomAppBar {...props} />,
         }}
       />
     </Stack>
