@@ -1,23 +1,18 @@
 import { router } from "expo-router";
-import { ActivityIndicator, List, MD2Colors, useTheme } from "react-native-paper";
+import {
+  ActivityIndicator,
+  List,
+  MD2Colors,
+  useTheme,
+} from "react-native-paper";
 import uuid from "react-native-uuid";
 import { Container } from "../../../components/Container";
-import { BirdType, Types } from "../../../aux/reducers/bird";
+import { Types } from "../../../aux/reducers/bird";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../aux/store";
-
-const getNewUuid = () => uuid.v4();
-/*
-const birds = [
-  {
-    id: getNewUuid(),
-    title: "Kanahaukka",
-  },
-];
-*/
+import { RefreshControl, ScrollView } from "react-native-gesture-handler";
 
 export default function Page() {
-  const theme = useTheme();
   const [loading, setLoading] = useState(true);
   const { state, dispatch } = useContext(AppContext);
 
@@ -46,18 +41,26 @@ export default function Page() {
   return (
     <Container>
       {loading && <ActivityIndicator animating={loading} />}
-      <List.Section>
-        {state.birds.map(({ name, id }) => {
-          return (
-            <List.Item
-              key={String(id)}
-              title={name}
-              left={() => <List.Icon icon="folder" />}
-              onPress={() => router.push(`/birds/bird/${id}`)}
-            />
-          );
-        })}
-      </List.Section>
+      {!loading && (
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={loading} onRefresh={getBirds} />
+          }
+        >
+          <List.Section>
+            {state.birds.map(({ name, id }) => {
+              return (
+                <List.Item
+                  key={String(id)}
+                  title={name}
+                  left={() => <List.Icon icon="folder" />}
+                  onPress={() => router.push(`/birds/bird/${id}`)}
+                />
+              );
+            })}
+          </List.Section>
+        </ScrollView>
+      )}
     </Container>
   );
 }
