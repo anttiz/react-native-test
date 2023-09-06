@@ -2,10 +2,7 @@ import { router } from "expo-router";
 import {
   ActivityIndicator,
   List,
-  MD2Colors,
-  useTheme,
 } from "react-native-paper";
-import uuid from "react-native-uuid";
 import { Container } from "../../../components/Container";
 import { Types } from "../../../aux/reducers/bird";
 import { useContext, useEffect, useState } from "react";
@@ -53,7 +50,7 @@ export default function Page() {
                 <List.Item
                   key={String(id)}
                   title={name}
-                  left={() => <List.Icon icon="folder" />}
+                  left={() => <List.Icon icon="bird" />}
                   onPress={() => router.push(`/birds/bird/${id}`)}
                 />
               );

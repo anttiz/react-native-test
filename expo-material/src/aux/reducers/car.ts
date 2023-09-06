@@ -3,7 +3,7 @@ import { Action, ActionMap } from "./types";
 export enum Types {
   Create = "CREATE_CAR",
   Delete = "DELETE_CAR",
-  Add = "ADD_CAR"
+  SetCars = "SET_CARS",
 }
 
 // Bird
@@ -21,16 +21,14 @@ type CarPayload = {
   [Types.Delete]: {
     id: string;
   };
+  [Types.SetCars]: {
+    cars: CarType[];
+  };
 };
 
-export type CarActions = ActionMap<CarPayload>[keyof ActionMap<
-  CarPayload
->];
+export type CarActions = ActionMap<CarPayload>[keyof ActionMap<CarPayload>];
 
-export const carReducer = (
-  state: CarType[],
-  action: Action
-) => {
+export const carReducer = (state: CarType[], action: Action) => {
   switch (action.type) {
     case Types.Create:
       return [
@@ -38,10 +36,12 @@ export const carReducer = (
         {
           id: action.payload.id,
           name: action.payload.name,
-        }
+        },
       ];
     case Types.Delete:
-      return [...state.filter(product => product.id !== action.payload.id)];
+      return [...state.filter((car) => car.id !== action.payload.id)];
+    case Types.SetCars:
+      return [...action.payload.cars];
     default:
       return state;
   }
